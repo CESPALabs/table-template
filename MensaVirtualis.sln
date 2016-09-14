@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{91DD4B28-807A-E16B-DF4E-9781AFF1F8F7}") = "MensaVirtualis", "Assembly-CSharp.csproj", "{F1723FDE-DA76-F853-4CA5-456CEB462F9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1723FDE-DA76-F853-4CA5-456CEB462F9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1723FDE-DA76-F853-4CA5-456CEB462F9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1723FDE-DA76-F853-4CA5-456CEB462F9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1723FDE-DA76-F853-4CA5-456CEB462F9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
