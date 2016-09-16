@@ -10,111 +10,111 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class Sensors2Players : MonoBehaviour {
-	// create object for datastream from PIStream.cs
-	private PlStream plstream;  
-
-	// unknown
-	private Vector3 prime_position;
-
-	// creates array to popluate with player controlled objects
-	public GameObject[] players;
-
-	public int Plactive;
-
-	// unknown
-	private int[] dropped;
-
-	// Use this for initialization
-	void Awake () {
-
-		// get the stream component from PlStream.cs
-		plstream = GetComponent<PlStream>();
-
-		// get players
-		players = GameObject.FindGameObjectsWithTag("Player");
-		dropped = new int[players.Length];
-
-	}
-	
-	void Start () {
-		// initializes arrays, fixes positions
-		zero();
-	}
-
-	// Update is called once per frame
-	void Update () {
-
-		// allow us to escape application
-		if (Input.GetKeyDown("escape"))
-			Application.Quit();
-	}
-
-	// called before performing any physics calculations
-	void FixedUpdate()
-	{
-		Plactive = plstream.active.Length;
-		// for each Player up to sensors slider value, update the position
-		for (int i = 0; plstream != null && i < plstream.active.Length; ++i)
-		{
-			if (plstream.active[i])
-			{
-				Vector3 pol_position = plstream.positions[i] -prime_position;
-				Vector4 pol_rotation = plstream.orientations[i];
-
-				// doing crude (90 degree) rotations into frame
-				Vector3 unity_position;
-				unity_position.x = pol_position.y;
-				unity_position.y = -pol_position.z;
-				unity_position.z = pol_position.x;
-
-
-				Quaternion unity_rotation;
-				unity_rotation.w = pol_rotation[0];
-				unity_rotation.x = -pol_rotation[2];
-				unity_rotation.y = pol_rotation[3];
-				unity_rotation.z = -pol_rotation[1];
-				//unity_rotation = Quaternion.Inverse(unity_rotation);
-
-				if (!players[i].activeSelf)
-					players[i].SetActive(true);
-				players[i].transform.position = unity_position;
-				players[i].transform.rotation = unity_rotation;
-
-				// set deactivate frame count to 10
-				dropped[i] = 10;
-
-				if (plstream.digio[i] != 0)
-				{
-					zero();
-				}
-			}
-			else
-			{
-				if (players[i].activeSelf)
-				{
-					dropped[i] -= 1;
-					if (dropped[i] <= 0)
-						players[i].SetActive(false);
-				}
-			}
-		}
-	}
-
-	public void zero()
-	{
-		for (var i = 0; i < players.Length; ++i)
-			players[i].transform.position = new Vector3(-1000, -1000, -1000);
-
-		for (var i = 0; i < dropped.Length; ++i)
-			dropped[i] = 0;
-
-		for (var i = 0; i < plstream.active.Length; ++i)
-		{
-			if (plstream.active[i])
-			{
-				prime_position = plstream.positions[i];
-				break;
-			}
-		}
-	}
+//	// create object for datastream from PIStream.cs
+//	private PlStream plstream;  
+//
+//	// unknown
+//	private Vector3 prime_position;
+//
+//	// creates array to popluate with player controlled objects
+//	public GameObject[] players;
+//
+//	public int Plactive;
+//
+//	// unknown
+//	private int[] dropped;
+//
+//	// Use this for initialization
+//	void Awake () {
+//
+//		// get the stream component from PlStream.cs
+//		plstream = GetComponent<PlStream>();
+//
+//		// get players
+//		players = GameObject.FindGameObjectsWithTag("Player");
+//		dropped = new int[players.Length];
+//
+//	}
+//	
+//	void Start () {
+//		// initializes arrays, fixes positions
+//		zero();
+//	}
+//
+//	// Update is called once per frame
+//	void Update () {
+//
+//		// allow us to escape application
+//		if (Input.GetKeyDown("escape"))
+//			Application.Quit();
+//	}
+//
+//	// called before performing any physics calculations
+//	void FixedUpdate()
+//	{
+//		Plactive = plstream.active.Length;
+//		// for each Player up to sensors slider value, update the position
+//		for (int i = 0; plstream != null && i < plstream.active.Length; ++i)
+//		{
+//			if (plstream.active[i])
+//			{
+//				Vector3 pol_position = plstream.positions[i] -prime_position;
+//				Vector4 pol_rotation = plstream.orientations[i];
+//
+//				// doing crude (90 degree) rotations into frame
+//				Vector3 unity_position;
+//				unity_position.x = pol_position.y;
+//				unity_position.y = -pol_position.z;
+//				unity_position.z = pol_position.x;
+//
+//
+//				Quaternion unity_rotation;
+//				unity_rotation.w = pol_rotation[0];
+//				unity_rotation.x = -pol_rotation[2];
+//				unity_rotation.y = pol_rotation[3];
+//				unity_rotation.z = -pol_rotation[1];
+//				//unity_rotation = Quaternion.Inverse(unity_rotation);
+//
+//				if (!players[i].activeSelf)
+//					players[i].SetActive(true);
+//				players[i].transform.position = unity_position;
+//				players[i].transform.rotation = unity_rotation;
+//
+//				// set deactivate frame count to 10
+//				dropped[i] = 10;
+//
+//				if (plstream.digio[i] != 0)
+//				{
+//					zero();
+//				}
+//			}
+//			else
+//			{
+//				if (players[i].activeSelf)
+//				{
+//					dropped[i] -= 1;
+//					if (dropped[i] <= 0)
+//						players[i].SetActive(false);
+//				}
+//			}
+//		}
+//	}
+//
+//	public void zero()
+//	{
+//		for (var i = 0; i < players.Length; ++i)
+//			players[i].transform.position = new Vector3(-1000, -1000, -1000);
+//
+//		for (var i = 0; i < dropped.Length; ++i)
+//			dropped[i] = 0;
+//
+//		for (var i = 0; i < plstream.active.Length; ++i)
+//		{
+//			if (plstream.active[i])
+//			{
+//				prime_position = plstream.positions[i];
+//				break;
+//			}
+//		}
+//	}
 }

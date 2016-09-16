@@ -1,4 +1,4 @@
-﻿//  VSS $Header: /PiDevTools11/Inc/PDIg4.h 18    1/09/14 1:05p Suzanne $  
+﻿ //  VSS $Header: /PiDevTools11/Inc/PDIg4.h 18    1/09/14 1:05p Suzanne $  
 using UnityEngine;
 using System.Collections;
 using System.Net.Sockets;
@@ -7,6 +7,8 @@ using System.Text;
 using System.Net;
 using System.Threading;
 using System.IO;
+using System.Collections.Generic;
+
 
 public enum PlTracker
 {
@@ -30,13 +32,17 @@ public class PlStream : MonoBehaviour
     public bool[] active;
     public uint[] digio;
 	public int nSenID;
-    public Vector3[] positions;
+    public Vector4[] positions;
     public Vector4[] orientations;
+
+	public List<Vector4> posData = new List<Vector4>();
+	public List<Vector4> rotData = new List<Vector4>();
+
 
     // internal state
     private int max_slots;
     private UdpClient udpClient;
-    private Thread conThread;
+    public Thread conThread;
     private bool stopListening;
 
     // Use this for initialization
@@ -74,7 +80,7 @@ public class PlStream : MonoBehaviour
             // allocate resources for those slots
             active = new bool[max_slots];
             digio = new uint[max_slots];
-            positions = new Vector3[max_slots];
+            positions = new Vector4[max_slots];
             orientations = new Vector4[max_slots];
 
             // initialize the slots
@@ -99,6 +105,7 @@ public class PlStream : MonoBehaviour
 
             // start the read thread
             conThread.Start();
+
         } catch (Exception e)
         {
             Debug.Log(e);
@@ -171,8 +178,13 @@ public class PlStream : MonoBehaviour
                     // store results
                     temp_active[nSenID] = true;
                     //digio[nSenID] = bfStylus;
-                    positions[nSenID] = new Vector3(t, u, v);
+					positions[nSenID] = new Vector4(nSenID*1.0f,t, u, v);
                     orientations[nSenID] = new Vector4(w, x, y, z);
+
+					posData.Add(positions[nSenID]);
+					rotData.Add(orientations[nSenID]);
+
+
                 }
 
                 // mark active slots

@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// grabBuffer.cs: script to create buffer stream of trialData from plStream
+/// grabBuffer.cs: script to grab and save data from the plStream (saves all active sensors)
 /// </summary>
 
 using UnityEngine;
@@ -17,14 +17,15 @@ public class grabBuffer : MonoBehaviour {
 
 	private PlStream plstream;
 
-	//public Vector3 pol_position;
-	//public Vector4 pol_rotation;
-	public List<Vector3> pol_positions = new List<Vector3>();
+	public List<Vector4> pol_positions = new List<Vector4>();
 	public List<Vector4> pol_rotations = new List<Vector4>();
 
 	public float countdown = 10;
 	public List<string> Clockhardware = new List<string>();
 	public List<string> Clockupdate = new List<string>(); // better to attach to dataManager.cs
+
+	private Thread conThread;
+
 
 
 
@@ -37,9 +38,8 @@ public class grabBuffer : MonoBehaviour {
 
 	void Start () {
 
-		// start Polhemus data thread in background called faster than framerate
-		U3D.Threading.Dispatcher.Initialize ();
-		CreateThread();
+		// get the active thread from the plstream:
+		conThread = plstream.conThread;
 	
 	}
 	
@@ -49,7 +49,9 @@ public class grabBuffer : MonoBehaviour {
 
 		if (countdown < 0)
 		{
-			save_buffer();
+			conThread.Abort(); // stop the thread
+			get_buffer(); // get the data
+			save_buffer(); // save the data
 		}
 
 		// get the time (add to list)
@@ -61,12 +63,8 @@ public class grabBuffer : MonoBehaviour {
 	private void get_buffer()
 	{
 
-		Vector3 pol_position = plstream.positions[1];
-		Vector4 pol_rotation = plstream.orientations[1];
-
-		pol_positions.Add(pol_position);
-		pol_rotations.Add(pol_rotation);
-
+		pol_positions = plstream.posData;
+		pol_rotations = plstream.rotData;
 
 	}
 
@@ -74,21 +72,21 @@ public class grabBuffer : MonoBehaviour {
 	{
 		StreamWriter sd = new StreamWriter("test.txt");
 
-		foreach(Vector3 sp in pol_positions)
+		foreach(Vector4 sp in pol_positions)
 				{
 					sd.WriteLine(sp);
 				}
 
 		sd.Close();
 
-		StreamWriter shc = new StreamWriter("hardclock.txt");
-
-		foreach(string ch in Clockhardware)
-		{
-			shc.WriteLine(ch);
-		}
-
-		shc.Close();
+//		StreamWriter shc = new StreamWriter("hardclock.txt");
+//
+//		foreach(string ch in Clockhardware)
+//		{
+//			shc.WriteLine(ch);
+//		}
+//
+//		shc.Close();
 
 		StreamWriter suc = new StreamWriter("updateclock.txt");
 
@@ -100,28 +98,4 @@ public class grabBuffer : MonoBehaviour {
 		suc.Close();
 	}
 
-
-
-
-	public void CreateThread()
-	{
-		Task.Run (() => {
-			//int totSampleint = Convert.ToInt32(totSample);
-			// [...] Code to be executed in auxiliary thread
-			for(int i=0; i<1000; i++)
-			{
-				//  this for loop iterates through the data collection
-				int value = i;
-//				polhemusSample = i;
-				get_buffer();
-				Clockhardware.Add(DateTime.UtcNow.ToString("hh:mm:ss.ffffff"));
-				MockUpSomeDelay();
-			}
-		});//.ContinueInMainThreadWith(Update);
-	}
-
-	void MockUpSomeDelay()
-	{
-		System.Threading.Thread.Sleep (0); // sleep between steps in milisec
-	}
 }
