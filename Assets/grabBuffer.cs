@@ -17,6 +17,8 @@ public class grabBuffer : MonoBehaviour {
 
 	private PlStream plstream;
 
+	public int trialNumber;
+
 	public List<Vector4> pol_positions = new List<Vector4>();
 	public List<Vector4> pol_rotations = new List<Vector4>();
 
@@ -37,6 +39,8 @@ public class grabBuffer : MonoBehaviour {
 	}
 
 	void Start () {
+		// grab trial number from the System Preferences:
+		trialNumber = 
 
 		// get the active thread from the plstream:
 		conThread = plstream.conThread;
@@ -70,7 +74,7 @@ public class grabBuffer : MonoBehaviour {
 
 	private void save_buffer()
 	{
-		StreamWriter sd = new StreamWriter("test.txt");
+		StreamWriter sd = new StreamWriter("trial_" + trialNumber + ".polhemus");
 
 		foreach(Vector4 sp in pol_positions)
 				{
