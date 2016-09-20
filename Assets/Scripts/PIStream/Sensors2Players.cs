@@ -11,7 +11,7 @@ using System.Collections;
 
 public class Sensors2Players : MonoBehaviour {
 	// create object for datastream from PIStream.cs
-	private PlStream plstream;  
+	private PlStream plstream; 
 
 	// unknown
 	private Vector3 prime_position;
@@ -31,7 +31,7 @@ public class Sensors2Players : MonoBehaviour {
 	void Awake () {
 
 		// get the stream component from PlStream.cs
-		plstream = GetComponent<PlStream>();
+		plstream = GameObject.Find("Polhemus").GetComponent<PlStream>();
 
 		// get players
 		players = GameObject.FindGameObjectsWithTag("Player");

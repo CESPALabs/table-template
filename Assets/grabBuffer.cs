@@ -18,7 +18,7 @@ public class grabBuffer : MonoBehaviour {
 
 	private PlStream plstream;
 
-	public int trialNumber;
+	private int trialNumber;
 
 	public List<Vector4> pol_positions = new List<Vector4>();
 	public List<Vector4> pol_rotations = new List<Vector4>();
@@ -35,7 +35,7 @@ public class grabBuffer : MonoBehaviour {
 	void Awake () {
 
 		// get the stream component from PlStream.cs
-		plstream = GetComponent<PlStream>();
+		plstream = GameObject.Find("Polhemus").GetComponent<PlStream>();
 
 	}
 
@@ -45,18 +45,25 @@ public class grabBuffer : MonoBehaviour {
 
 		// get the active thread from the plstream:
 		conThread = plstream.conThread;
+		trialNumber = PlayerPrefs.GetInt("trialnumber");
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		// countdown for testing:
 		countdown = countdown - Time.deltaTime;
+
 
 		if (countdown < 0)
 		{
-			conThread.Abort(); // stop the thread
+			plstream.enabled = false;
+			conThread.Abort();
 			get_buffer(); // get the data
 			save_buffer(); // save the data
+
+			SceneManager.LoadScene("ITI");
 		}
 
 		// get the time (add to list)
