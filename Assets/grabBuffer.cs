@@ -1,5 +1,6 @@
 ﻿/// <summary>
 /// grabBuffer.cs: script to grab and save data from the plStream (saves all active sensors)
+/// NOTE: saves at completion of a trial (this saves memory)
 /// </summary>
 
 using UnityEngine;
@@ -40,7 +41,7 @@ public class grabBuffer : MonoBehaviour {
 
 	void Start () {
 		// grab trial number from the System Preferences:
-		trialNumber = 
+//		trialNumber = 
 
 		// get the active thread from the plstream:
 		conThread = plstream.conThread;

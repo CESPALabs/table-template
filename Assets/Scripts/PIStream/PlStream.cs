@@ -1,4 +1,6 @@
 ﻿ //  VSS $Header: /PiDevTools11/Inc/PDIg4.h 18    1/09/14 1:05p Suzanne $  
+
+// attach to Polhemus object on calibration scene. ensures that stream is not destroyed between scenes
 using UnityEngine;
 using System.Collections;
 using System.Net.Sockets;
@@ -48,7 +50,8 @@ public class PlStream : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        try
+		DontDestroyOnLoad(transform.gameObject);
+		try
         {
             // there are some constraints between tracking systems
             switch (tracker_type)
@@ -178,7 +181,7 @@ public class PlStream : MonoBehaviour
                     // store results
                     temp_active[nSenID] = true;
                     //digio[nSenID] = bfStylus;
-					positions[nSenID] = new Vector4(nSenID*1.0f,t, u, v);
+					positions[nSenID] = new Vector4(t, u, v, nSenID*1.0f);
                     orientations[nSenID] = new Vector4(w, x, y, z);
 
 					posData.Add(positions[nSenID]);

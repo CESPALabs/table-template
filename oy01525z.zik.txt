@@ -1,0 +1,216 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+# Conflicts:
+#	Library/CurrentLayout.dwlt
+#	Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+#	Library/assetDatabase3
+#	Library/expandedItems
+#	Library/metadata/00/00000000000000004000000000000000
+#	Library/metadata/00/00000000000000006100000000000000
+#	Library/metadata/10/10efe26f05032df4ea452c8d27eaf8a1
+#	Library/metadata/68/68fb8509eedc6f946a4ee5f89a376511
+#	Library/metadata/76/76591ab92f541d14b90f851cf3ee44ed
+#	table-template.userprefs
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 1 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   Assembly-CSharp.csproj
+#	deleted:    Assets/FTCmdIF.dll.meta
+#	deleted:    Assets/G4CmdIF.dll.meta
+#	deleted:    Assets/G4Track.dll.meta
+#	deleted:    Assets/PDI.dll.meta
+#	deleted:    Assets/PiCmdIF.dll.meta
+#	deleted:    Assets/PlStream/Scripts.meta
+#	deleted:    Assets/Plugins.meta
+#	deleted:    Assets/Plugins/unityVrpn.dll.meta
+#	deleted:    Assets/UnityExport.exe.meta
+#	modified:   Assets/grabBuffer.cs
+#	new file:   Library/ScriptAssemblies/Assembly-CSharp.dll
+#	deleted:    Library/ScriptAssemblies/BuiltinAssemblies.stamp
+#	new file:   Library/ShaderCache/0/0212f40e3a779b6cb652b9a999deb7a4.bin
+#	new file:   Library/ShaderCache/0/0d5dd07f3c8faa38a95b0d8df10f2c49.bin
+#	new file:   Library/ShaderCache/0/0da485b9b7775503cf2d6777936be17e.bin
+#	new file:   Library/ShaderCache/3/31b99e484823c8586e540323750efe27.bin
+#	new file:   Library/ShaderCache/3/378941534f7bd0dbf15de7547871e70d.bin
+#	new file:   Library/ShaderCache/3/3ac2456865bee2d6fd44cc3b11d7caa3.bin
+#	new file:   Library/ShaderCache/3/3c9882c87c8bd5c857d09bdb8c1be979.bin
+#	new file:   Library/ShaderCache/5/53d4962acb0f2b873a54150331185d0e.bin
+#	new file:   Library/ShaderCache/5/5638b81934720f3040b88373a4fa714f.bin
+#	new file:   Library/ShaderCache/5/5826d23b8aeb24df5eba1ac36ba994c3.bin
+#	new file:   Library/ShaderCache/5/5ab8f41ca3a42ebb7feb5ca72d9e5394.bin
+#	new file:   Library/ShaderCache/5/5befb44a3ec940ffdf0d6a5530928017.bin
+#	new file:   Library/ShaderCache/7/769203a9dd7b2d7f366e73bd69ecee2a.bin
+#	new file:   Library/ShaderCache/7/7c27db6055e47c9b5eddeee5650d46e8.bin
+#	new file:   Library/ShaderCache/8/80e24a7587c53eb7be5130d5aa2eedc3.bin
+#	new file:   Library/ShaderCache/8/832e9bb53b93e7961627cdb356d78da2.bin
+#	new file:   Library/ShaderCache/8/850069714bc102cb31c486c16e98bdff.bin
+#	new file:   Library/ShaderCache/8/896c443dbcd6c3f79dcaf726e48dbff3.bin
+#	new file:   Library/ShaderCache/8/8d4a29511276cbfd198acd276abbeb47.bin
+#	new file:   Library/ShaderCache/9/9568ef621635234d6dbf063e4e0dbd4e.bin
+#	new file:   Library/ShaderCache/9/96ced58d35470a6b7497c42232b6ea95.bin
+#	new file:   Library/ShaderCache/9/9acdc7a422524e3b82fb857e55b9544d.bin
+#	new file:   Library/ShaderCache/9/9bd8e51ea00fee6ae06f34865c3279fb.bin
+#	new file:   Library/ShaderCache/a/ab40555d756d3c9b084b0bfe4dc241cf.bin
+#	new file:   Library/ShaderCache/b/b986f1692ec2cf7f928c43fb16155c13.bin
+#	new file:   Library/ShaderCache/b/bf371f4647315306c2603f54a438cf2c.bin
+#	new file:   Library/ShaderCache/b/bf53c478c2cb35fd17a90bfeaa0812ab.bin
+#	new file:   Library/ShaderCache/d/de45ca70667620c42af1082c109bb94e.bin
+#	new file:   Library/ShaderCache/e/ea0481506d458122345f00d4d4301f33.bin
+#	new file:   Library/ShaderCache/e/ebc7f6836d8dd3e386e814ad3f36b67a.bin
+#	new file:   Library/ShaderCache/f/f7c9779763f0458bd8a4624d0c16fedd.bin
+#	new file:   Library/ShaderCache/f/fb08b13583f64e25d5961b941515f4e6.bin
+#	modified:   Library/metadata/00/00000000000000002000000000000000
+#	modified:   Library/metadata/00/00000000000000003000000000000000
+#	modified:   Library/metadata/00/00000000000000004100000000000000
+#	modified:   Library/metadata/00/00000000000000005000000000000000
+#	modified:   Library/metadata/00/00000000000000005100000000000000
+#	modified:   Library/metadata/00/00000000000000006000000000000000
+#	modified:   Library/metadata/00/00000000000000007000000000000000
+#	modified:   Library/metadata/00/00000000000000007100000000000000
+#	modified:   Library/metadata/00/00000000000000008000000000000000
+#	modified:   Library/metadata/00/00000000000000008100000000000000
+#	modified:   Library/metadata/00/00000000000000009000000000000000
+#	modified:   Library/metadata/00/0000000000000000a000000000000000
+#	modified:   Library/metadata/00/0000000000000000a100000000000000
+#	modified:   Library/metadata/00/0000000000000000b000000000000000
+#	modified:   Library/metadata/00/0000000000000000c000000000000000
+#	modified:   Library/metadata/18/18214e9d6af6248559d501391856f1c7
+#	modified:   Library/metadata/18/18214e9d6af6248559d501391856f1c7.info
+#	modified:   Library/metadata/1e/1e485bbd143d3864bbad82490d9c8947
+#	modified:   Library/metadata/20/209090caaa1b44318ae1f6f173d180b5
+#	modified:   Library/metadata/23/23013c4ec0be94ae9bec34d68164ebc7
+#	modified:   Library/metadata/23/23013c4ec0be94ae9bec34d68164ebc7.info
+#	modified:   Library/metadata/24/243bfbb30eaef495986d1541e7ed4a83
+#	modified:   Library/metadata/2c/2c528fec5d95e4ac28cf46399b887662
+#	modified:   Library/metadata/2c/2c528fec5d95e4ac28cf46399b887662.info
+#	modified:   Library/metadata/30/3042eebdc743b4dc396bfc4e0041a11b
+#	deleted:    Library/metadata/30/30e26d3a9942541a6bd0fcd092a4942b
+#	deleted:    Library/metadata/30/30e26d3a9942541a6bd0fcd092a4942b.info
+#	modified:   Library/metadata/33/3305de7d0a86c754d982ab841dceff26
+#	modified:   Library/metadata/34/344d11f8105d4499ca2181ab92875969
+#	modified:   Library/metadata/37/37fcc91af3ba30441b36c245944ad951
+#	modified:   Library/metadata/37/37fcc91af3ba30441b36c245944ad951.info
+#	modified:   Library/metadata/3b/3b55d357df43e45d99b44d9d0a37b780
+#	modified:   Library/metadata/3b/3b55d357df43e45d99b44d9d0a37b780.info
+#	modified:   Library/metadata/3c/3c0ad459c1534645b5d603b7cc258f97
+#	deleted:    Library/metadata/3e/3e3a60bd01c8fe34a9d09c67bcf243e4
+#	deleted:    Library/metadata/3e/3e3a60bd01c8fe34a9d09c67bcf243e4.info
+#	modified:   Library/metadata/3f/3fc844b25859c427b9156203f90338cf
+#	modified:   Library/metadata/3f/3fc844b25859c427b9156203f90338cf.info
+#	modified:   Library/metadata/44/440eb36db91ca410f800ff3cfe43572f
+#	modified:   Library/metadata/44/440eb36db91ca410f800ff3cfe43572f.info
+#	modified:   Library/metadata/44/448e960cca2164d9ea981cc7bef38192
+#	modified:   Library/metadata/44/448e960cca2164d9ea981cc7bef38192.info
+#	modified:   Library/metadata/4b/4bb88f45d16f741569b3d31806b14334
+#	modified:   Library/metadata/4c/4c85abd0a4d974473b97e81d10a3a6bc
+#	modified:   Library/metadata/4c/4c85abd0a4d974473b97e81d10a3a6bc.info
+#	modified:   Library/metadata/50/5014bfe6527685f42b1b1569b3438d19
+#	modified:   Library/metadata/52/527393b10fb66418bbaa072e104f5a30
+#	modified:   Library/metadata/54/54e03e659ab274dd9b12c0538a9c4983
+#	modified:   Library/metadata/54/54e03e659ab274dd9b12c0538a9c4983.info
+#	modified:   Library/metadata/55/55567a44c3b7147f19bb452b07390675
+#	modified:   Library/metadata/55/55567a44c3b7147f19bb452b07390675.info
+#	modified:   Library/metadata/56/56e79127451f64dc393e45ee3e4baafc
+#	modified:   Library/metadata/57/5710a1f47af2947699139509aae39149
+#	modified:   Library/metadata/5c/5c5280de583bb4ec8873c5c3ad747357
+#	modified:   Library/metadata/5e/5e2eb0dd09c7541b2aa36a03160d74f0
+#	modified:   Library/metadata/5e/5e2eb0dd09c7541b2aa36a03160d74f0.info
+#	modified:   Library/metadata/5e/5eceb6f33b9f8c547b13649dbe5da686
+#	modified:   Library/metadata/5e/5eceb6f33b9f8c547b13649dbe5da686.info
+#	modified:   Library/metadata/5f/5f32cd94baa94578a686d4b9d6b660f7
+#	modified:   Library/metadata/73/739bbd9f364b4268874f9fd86ab3beef
+#	modified:   Library/metadata/73/73dd3d5c26c30421c85e94a52dcd998c
+#	modified:   Library/metadata/73/73dd3d5c26c30421c85e94a52dcd998c.info
+#	modified:   Library/metadata/74/74a0db92f77614756858733073d00de6
+#	deleted:    Library/metadata/75/75d13b924d86c304788bae3f4b25b16a
+#	deleted:    Library/metadata/75/75d13b924d86c304788bae3f4b25b16a.info
+#	modified:   Library/metadata/78/783d52e3af5720c45b6a0880015f7e42
+#	modified:   Library/metadata/7c/7cbab2be89b54486bbd23a6fe637d30e
+#	modified:   Library/metadata/7d/7d059eb54c0e049a596f0dec182dc67c
+#	modified:   Library/metadata/7e/7e6f84bf81c8d4de280f1133cff7e601
+#	modified:   Library/metadata/7f/7f656d9e8dab747ddbc12e23a5dc03d8
+#	modified:   Library/metadata/7f/7f656d9e8dab747ddbc12e23a5dc03d8.info
+#	modified:   Library/metadata/80/80a3616ca19596e4da0f10f14d241e9f
+#	deleted:    Library/metadata/80/80affb0e4ce9ad64d9d98ff61387728d
+#	deleted:    Library/metadata/80/80affb0e4ce9ad64d9d98ff61387728d.info
+#	modified:   Library/metadata/81/81b930e599ab04d8a9f1f08559f1c0a5
+#	deleted:    Library/metadata/83/83b6e1e463a2ad843b21eec8fc49d38c
+#	deleted:    Library/metadata/83/83b6e1e463a2ad843b21eec8fc49d38c.info
+#	modified:   Library/metadata/85/852e56802eb941638acbb491814497b0
+#	modified:   Library/metadata/87/870353891bb340e2b2a9c8707e7419ba
+#	modified:   Library/metadata/89/8904ceaea409c4eba8b1d4e474818a43
+#	modified:   Library/metadata/8e/8e0cd8ed44d4412cbe0642067abc9e44
+#	modified:   Library/metadata/97/97decbdab0634cdd991f8d23ddf0dead
+#	modified:   Library/metadata/9b/9bfcd6d1486fa4fb393d46ad7684f581
+#	modified:   Library/metadata/9c/9c41597e3e03b480681225c7962e67af
+#	modified:   Library/metadata/9c/9c41597e3e03b480681225c7962e67af.info
+#	modified:   Library/metadata/9d/9d204f610bc673446b2b4f9c6997b688
+#	modified:   Library/metadata/9d/9d863fd5907be432bb893c17c1fab048
+#	modified:   Library/metadata/9d/9d863fd5907be432bb893c17c1fab048.info
+#	modified:   Library/metadata/9e/9e7dfa6f3e9924467b0bbcf4396bc0a0
+#	modified:   Library/metadata/9e/9e7dfa6f3e9924467b0bbcf4396bc0a0.info
+#	modified:   Library/metadata/a0/a049b7fba5eb2412e98ad967fae00bc4
+#	modified:   Library/metadata/a0/a0d4a04755c3d4414a34481d8d83f90b
+#	modified:   Library/metadata/a0/a0d4a04755c3d4414a34481d8d83f90b.info
+#	deleted:    Library/metadata/a5/a52f4e36b33cc38448e85ed9c716e83d
+#	deleted:    Library/metadata/a5/a52f4e36b33cc38448e85ed9c716e83d.info
+#	modified:   Library/metadata/a5/a59a63452c081bd4e898a79ec60b14d9
+#	modified:   Library/metadata/a6/a6a479c66e22b4a42ab18d974dbdf491
+#	modified:   Library/metadata/ac/ac61e957f28684a7a917f0dfcaea77a4
+#	modified:   Library/metadata/ac/ac865f55780124eeabc4a99d6d0b0115
+#	modified:   Library/metadata/ad/adebbd281f1a4ef3a30be7f21937e02f
+#	modified:   Library/metadata/b0/b02a586aacc31e04eac524159a9e3b90
+#	modified:   Library/metadata/b7/b7b9794a4552e4916a4d7c8b332cec95
+#	modified:   Library/metadata/bb/bb13a3831816f4f489a32ff1859eb75b
+#	modified:   Library/metadata/bb/bb13a3831816f4f489a32ff1859eb75b.info
+#	modified:   Library/metadata/bb/bbefce0c48a154f23856bc91d921182f
+#	modified:   Library/metadata/bc/bc2c370313b50c142b399f91670748fc
+#	modified:   Library/metadata/bf/bfd675cc0db1d4656b75dc6d6ba91142
+#	modified:   Library/metadata/bf/bfd675cc0db1d4656b75dc6d6ba91142.info
+#	modified:   Library/metadata/c4/c48f755640f4048aeaa765302f0c14b3
+#	modified:   Library/metadata/c6/c6e0767b1f8c34890ac245217f4b9731
+#	modified:   Library/metadata/c6/c6e0767b1f8c34890ac245217f4b9731.info
+#	modified:   Library/metadata/c7/c7df1619fd0e049eab3ca42d65f7676d
+#	modified:   Library/metadata/c7/c7df1619fd0e049eab3ca42d65f7676d.info
+#	modified:   Library/metadata/cb/cba4562cece794697b418ce8e7c04b3c
+#	modified:   Library/metadata/cd/cdb754a1767f2430b9b98417711fb02c
+#	modified:   Library/metadata/cd/cdb754a1767f2430b9b98417711fb02c.info
+#	modified:   Library/metadata/d4/d4bd573ab24a54fbfbf68f7f9ecb36f7
+#	modified:   Library/metadata/d4/d4bd573ab24a54fbfbf68f7f9ecb36f7.info
+#	modified:   Library/metadata/d6/d6cdc79ec19714fcd980ca3f6ac01a0a
+#	modified:   Library/metadata/d6/d6cdc79ec19714fcd980ca3f6ac01a0a.info
+#	modified:   Library/metadata/db/db5e4816f27734490bc837e55c81e6be
+#	modified:   Library/metadata/db/db5e4816f27734490bc837e55c81e6be.info
+#	modified:   Library/metadata/e0/e02f8e6aaa70d48e5a744725a3c29723
+#	modified:   Library/metadata/e0/e02f8e6aaa70d48e5a744725a3c29723.info
+#	deleted:    Library/metadata/e8/e810bcba7cf1c374a84c12e959cd48d2
+#	deleted:    Library/metadata/e8/e810bcba7cf1c374a84c12e959cd48d2.info
+#	modified:   Library/metadata/f2/f2af333648c334319bd43c214449ab50
+#	deleted:    Library/metadata/f5/f55d5d4e3f75f42bb9a9fea09f705159
+#	deleted:    Library/metadata/f5/f55d5d4e3f75f42bb9a9fea09f705159.info
+#	modified:   Library/metadata/f5/f5f67c52d1564df4a8936ccd202a3bd8
+#	deleted:    Library/metadata/f6/f64b36872f450ab4aa0ab8e586b2be1c
+#	deleted:    Library/metadata/f6/f64b36872f450ab4aa0ab8e586b2be1c.info
+#	modified:   Library/metadata/f7/f7d5f039a8e7848e889e1546d37dc39e
+#	modified:   Library/metadata/f7/f7d5f039a8e7848e889e1546d37dc39e.info
+#	modified:   Library/metadata/fa/faf20bfab8fae436aba2005ba748669c
+#	modified:   Library/metadata/fa/faf20bfab8fae436aba2005ba748669c.info
+#	new file:   Library/shadercompiler-UnityShaderCompiler0.log
+#	modified:   table-template.sln
+#	modified:   table-template.userprefs
+#
+

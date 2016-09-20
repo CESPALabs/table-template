@@ -1,7 +1,9 @@
 ﻿/// <summary>
 /// Manual calibrate. Uses raw polhemus data from 4 positions (corners) of table to scale polhemus space to table space.
 /// 
-/// This script returns tableOrigin (polhemus position that corresponds to 0,0,0 on table) and tableScale which is used by Sensor.cs.
+/// This script returns tableOrigin (polhemus position that corresponds to 0,0,0 on table) and tableScale which is used by Sensors2Players.cs.
+/// 
+/// When using attach to TableBG in calibration scene.
 /// </summary>
 
 using UnityEngine;
@@ -26,15 +28,32 @@ public class manualCalibrate : MonoBehaviour {
 	string targetNumber;
 	public string pointNumber;
 
+	private PlStream plstream;  
+	public int Plactive;
+	private int[] dropped;
+	public int i;
+
+	public GameObject[] players;
+
+	private GameObject polhemus;
+
+
 
 	public Vector3 getVirtualOrigin(){
-				xOrigin = (xpos [0] + xpos [1] + xpos [2] + xpos [3]) / 4;
-				yOrigin = (ypos [0] + ypos [1] + ypos [2] + ypos [3]) / 4;
-				zOrigin = (zpos [0] + zpos [1] + zpos [2] + zpos [3]) / -4;
+		// calculate origin
+		xOrigin = (xpos [0] + xpos [1] + xpos [2] + xpos [3]) / 4;
+		yOrigin = (ypos [0] + ypos [1] + ypos [2] + ypos [3]) / 4;
+		zOrigin = (zpos [0] + zpos [1] + zpos [2] + zpos [3]) / 4;
 
-				tableOrigin = new Vector3 (xOrigin, yOrigin, zOrigin);
+		// save origin
+		PlayerPrefs.SetFloat("xOrigin", xOrigin);
+		PlayerPrefs.SetFloat("yOrigin", yOrigin);
+		PlayerPrefs.SetFloat("zOrigin", zOrigin);
 
-				return tableOrigin;
+		// return for display
+		tableOrigin = new Vector3 (xOrigin, yOrigin, zOrigin);
+		return tableOrigin;
+
 		}
 
 //	float getVirtualSurface(){
@@ -49,79 +68,125 @@ public class manualCalibrate : MonoBehaviour {
 		float yDist = ((ypos [0] - ypos [2]) + (ypos [0] - ypos [3]) + (ypos [1] - ypos [2]) + (ypos [1] - ypos [3]))/4f; 
 		yScale = yDist/1.4f;
 
+		PlayerPrefs.SetFloat("xScale", xScale);
+		PlayerPrefs.SetFloat("yScale", yScale);
+
 		tableScale = new Vector2 (xScale,yScale);
 		return tableScale;
 	}
 
+	void Awake () {
 
+
+
+
+
+	}
 
 	void Start (){
-		GameObject table = GameObject.Find("tableBG");
-		//Countdown timeScript = table.GetComponent<Countdown>();
+		// get the stream component from PlStream.cs
+		plstream = GameObject.Find("Polhemus").GetComponent<PlStream>();
+
+		// get players
+		players = GameObject.FindGameObjectsWithTag("Player");
+		dropped = new int[players.Length];
 		}
 
 
 	// Update is called once per frame
-	void Update () 
+
+	void Update()
 	{
-		//targetText.text = targets.ToString();
-		//RaycastHit hit;
-		//Ray grabbingRay = new Ray (transform.position, Vector3.forward);
-		//CharacterController charContr = GetComponent<CharacterController>();
-		//Debug.DrawRay (transform.position, Vector3.forward * grabHeight);
-
-
-
-		PDIposition = VRPN.vrpnTrackerPos("TrackerJohn@localhost",1);
-
-		transform.position = PDIposition;
-
-		if (Input.GetKeyDown("space"))
-		//if (Physics.Raycast (grabbingRay, out hit, grabHeight) && hit.collider.tag=="calibrate")
+		Plactive = plstream.active.Length;
+		// for each Player up to sensors slider value, update the position
+		for (int i = 0; plstream != null && i < plstream.active.Length; ++i)
 		{
-			//Debug.Log ("hit the avatar");
-			xpos.Add(PDIposition[0]);
-			ypos.Add(PDIposition[1]);
-			zpos.Add(PDIposition[2]);
+			if (plstream.active[i])
+			{
+				Vector4 plstream_pos = plstream.positions[i];
+				Vector3 pol_position = new Vector3(plstream_pos.x, plstream_pos.y, plstream_pos.z);
+				Vector4 pol_rotation = plstream.orientations[i];
+
+				// doing crude (90 degree) rotations into frame
+				Vector3 unity_position;
+				unity_position.x = pol_position.y;
+				unity_position.y = -pol_position.z;
+				unity_position.z = pol_position.x;
+
+
+				Quaternion unity_rotation;
+				unity_rotation.w = pol_rotation[0];
+				unity_rotation.x = -pol_rotation[2];
+				unity_rotation.y = pol_rotation[3];
+				unity_rotation.z = -pol_rotation[1];
+				//unity_rotation = Quaternion.Inverse(unity_rotation);
+
+				if (!players[i].activeSelf)
+				players[i].SetActive(true);
+				players[i].transform.position = unity_position;
+				players[i].transform.rotation = unity_rotation;
+
+				// set deactivate frame count to 10
+				dropped[i] = 10;
+
+				PDIposition = unity_position;
+
+				//transform.position = PDIposition;
+
+				if (Input.GetKeyDown("space"))
+				{
+					xpos.Add(PDIposition[0]);
+					ypos.Add(PDIposition[1]);
+					zpos.Add(PDIposition[2]);
+
+					targets++;
+					targetNumber = targets.ToString();
+					pointNumber = string.Concat("point",targetNumber);
+
+					GameObject removePoint = GameObject.Find(pointNumber);
+					Destroy(removePoint);
+
+				} else {
+
+				}
+
+				if (targets > 3) {
+
+					getVirtualOrigin();
+					getTableScale();
 
 
 
 
-
-			//				hit.collider.transform
-			//movedCircle = GameObject.FindWithTag("avatar");
-			//Destroy(hit.transform.gameObject);
-			//touchedCircle = caliCircles.GetChild(targets);
-		//	DestroyObject(touchedCircle);
-			targets++;
-			targetNumber = targets.ToString();
-			pointNumber = string.Concat("point",targetNumber);
-			
-			GameObject removePoint = GameObject.Find(pointNumber);
-			Destroy(removePoint);
-
-		} else {
-
-		}
-
-		if (targets > 3) {
-
-			getVirtualOrigin();
-			getTableScale();
-			//getVirtualSurface();
-
-			
-
-			Debug.Log("Calibration Completed");
-			Debug.Log (tableOrigin);
+					Debug.Log("Calibration Completed");
+					Debug.Log (tableOrigin);
 
 
 
-			if (Input.GetKeyDown("s"))
-			    {
-				SceneManager.LoadScene("TableActive");
+					if (Input.GetKeyDown("s"))
+					{
+						SceneManager.LoadScene("TableActive");
+
+						//plstream.conThread.Abort();
+
+					}
+				}
+
+
+
+
+			}
+			else
+			{
+				if (players[i].activeSelf)
+				{
+					dropped[i] -= 1;
+					if (dropped[i] <= 0)
+						players[i].SetActive(false);
 				}
 			}
+		}
 	}
+		
 }
 
