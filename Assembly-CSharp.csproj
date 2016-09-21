@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\GameMGR.cs" />
      <Compile Include="Assets\InitiateTrial.cs" />
+     <Compile Include="Assets\Scripts\ChangeDiscSize.cs" />
      <Compile Include="Assets\Scripts\Debugging\showPosition.cs" />
      <Compile Include="Assets\Scripts\Debugging\showPositionActive.cs" />
      <Compile Include="Assets\Scripts\GameLogic\Saver.cs" />
@@ -74,6 +75,7 @@
      <Compile Include="Assets\Scripts\Polhemus2Unity\Sensor.cs" />
      <Compile Include="Assets\Scripts\Polhemus2Unity\SensorN.cs" />
      <Compile Include="Assets\Scripts\Polhemus2Unity\VRPN.cs" />
+     <Compile Include="Assets\Scripts\Polhemus2Unity\grabBuffer.cs" />
      <Compile Include="Assets\Scripts\ScenceControl\CameraController.cs" />
      <Compile Include="Assets\Scripts\Timing\Countdown.cs" />
      <Compile Include="Assets\Scripts\Timing\FPSdisplay.cs" />
@@ -93,7 +95,6 @@
      <Compile Include="Assets\U3D\Threading\example\LeaderboardTest.cs" />
      <Compile Include="Assets\changeSize.cs" />
      <Compile Include="Assets\countdowntrigger.cs" />
-     <Compile Include="Assets\grabBuffer.cs" />
      <None Include="Assets\Readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

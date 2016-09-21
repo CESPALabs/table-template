@@ -21,12 +21,14 @@ public class manualCalibrate : MonoBehaviour {
 	public int targets = 0;
 	public Vector3 PDIposition = new Vector3();
 	public static Vector3 tableOrigin = new Vector3();
+	public static Vector3 crossProd = new Vector3();
 	public static Vector2 tableScale = new Vector3();
 	static float xOrigin, yOrigin, zOrigin, xScale, yScale; 
 	GameObject calibrationPoints;
 	public GameObject removePoint;
 	string targetNumber;
 	public string pointNumber;
+	private Vector3 v1, v2;
 
 	private PlStream plstream;  
 	public int Plactive;
@@ -74,6 +76,7 @@ public class manualCalibrate : MonoBehaviour {
 		tableScale = new Vector2 (xScale,yScale);
 		return tableScale;
 	}
+		
 
 	void Awake () {
 
@@ -104,14 +107,14 @@ public class manualCalibrate : MonoBehaviour {
 			if (plstream.active[i])
 			{
 				Vector4 plstream_pos = plstream.positions[i];
-				Vector3 pol_position = new Vector3(plstream_pos.x, plstream_pos.y, plstream_pos.z);
+				Vector3 pol_position = new Vector3(plstream_pos.x, plstream_pos.y, plstream_pos.z) * .01f;
 				Vector4 pol_rotation = plstream.orientations[i];
 
 				// doing crude (90 degree) rotations into frame
 				Vector3 unity_position;
-				unity_position.x = pol_position.y;
-				unity_position.y = -pol_position.z;
-				unity_position.z = pol_position.x;
+				unity_position.x = pol_position.x;
+				unity_position.y = pol_position.y;
+				unity_position.z = -1f * pol_position.z;
 
 
 				Quaternion unity_rotation;

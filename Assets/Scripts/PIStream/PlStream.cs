@@ -24,6 +24,7 @@ public class PlStream : MonoBehaviour
 {
     // port used for our UDP connection
     public int port = 5123;
+	public bool stopListening;
 
     // tracker descriptors
     public PlTracker tracker_type = PlTracker.Liberty;
@@ -45,12 +46,14 @@ public class PlStream : MonoBehaviour
     private int max_slots;
     private UdpClient udpClient;
     public Thread conThread;
-    private bool stopListening;
+
+	public int buffer_line;
 
     // Use this for initialization
     void Awake()
     {
 		DontDestroyOnLoad(transform.gameObject);
+		//stopListening = GameObject.Find("
 		try
         {
             // there are some constraints between tracking systems
@@ -126,7 +129,7 @@ public class PlStream : MonoBehaviour
     // read thread
 
     // read thread
-    private void read_liberty()
+    public void read_liberty()
     {
         stopListening = false;
 
@@ -187,6 +190,7 @@ public class PlStream : MonoBehaviour
 					posData.Add(positions[nSenID]);
 					rotData.Add(orientations[nSenID]);
 
+					buffer_line++;
 
                 }
 
@@ -207,6 +211,7 @@ public class PlStream : MonoBehaviour
             udpClient = null;
         }
     }
+
 
     // read thread
 

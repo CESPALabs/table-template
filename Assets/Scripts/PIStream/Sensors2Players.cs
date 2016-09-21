@@ -13,8 +13,9 @@ public class Sensors2Players : MonoBehaviour {
 	// create object for datastream from PIStream.cs
 	private PlStream plstream; 
 
-	// unknown
+	// uses origin and scale parameters from manualCalibration.cs
 	private Vector3 prime_position;
+	private Vector2 table_scale;
 
 	// make public positions and orientations
 	// useful for sending to other scripts (e.g., calibrations)
@@ -44,7 +45,9 @@ public class Sensors2Players : MonoBehaviour {
 		//plstream.conThread.Start();
 		// initializes arrays, fixes positions
 		zero();
-		//prime_position = new Vector3(PlayerPrefs.GetFloat("xOrigin"), PlayerPrefs.GetFloat("yOrigin"), PlayerPrefs.GetFloat("zOrigin")) ;
+		prime_position = new Vector3(PlayerPrefs.GetFloat("xOrigin"), PlayerPrefs.GetFloat("yOrigin"), PlayerPrefs.GetFloat("zOrigin")) ;
+		table_scale = new Vector2(PlayerPrefs.GetFloat("xScale"), PlayerPrefs.GetFloat("yScale")); 
+		//table_scale = new Vector2(1, 1); 
 	}
 
 	// Update is called once per frame
@@ -65,14 +68,14 @@ public class Sensors2Players : MonoBehaviour {
 			if (plstream.active[i])
 			{
 				Vector4 plstream_pos = plstream.positions[i];
-				Vector3 pol_position = new Vector3(plstream_pos.x, plstream_pos.y, plstream_pos.z) - prime_position;
+				Vector3 pol_position = new Vector3(plstream_pos.x, plstream_pos.y, -1f* plstream_pos.z+3f) *.01f - prime_position;
 				Vector4 pol_rotation = plstream.orientations[i];
 
 				// doing crude (90 degree) rotations into frame
 				Vector3 unity_position;
-				unity_position.x = pol_position.y;
-				unity_position.y = -pol_position.z;
-				unity_position.z = pol_position.x;
+				unity_position.x = pol_position.x / table_scale.x;
+				unity_position.y = pol_position.y / table_scale.y;
+				unity_position.z = pol_position.z;
 
 
 				Quaternion unity_rotation;
@@ -85,7 +88,7 @@ public class Sensors2Players : MonoBehaviour {
 				if (!players[i].activeSelf)
 					players[i].SetActive(true);
 				players[i].transform.position = unity_position;
-				players[i].transform.rotation = unity_rotation;
+				//players[i].transform.rotation = unity_rotation;
 
 				// set deactivate frame count to 10
 				dropped[i] = 10;

@@ -67,10 +67,10 @@ public class grabObject : MonoBehaviour {
 		Ray grabbingRay = new Ray (transform.position, Vector3.back);
 		Debug.DrawRay (transform.position, Vector3.back * grabHeight);
 
+		 
 
 
-
-		if (Physics.Raycast (grabbingRay, out hit, grabHeight) && hit.collider.tag=="object" && grabCountdown < 0 && transform.position.z < .1)
+		if (Physics.Raycast (grabbingRay, out hit, grabHeight) && hit.collider.tag=="object" && grabCountdown < 0 && Mathf.Abs(transform.position.z-lastPos.z) < .15)
  		{
 			grabbedIt = true;
 		} else {
