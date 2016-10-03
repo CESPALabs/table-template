@@ -8,6 +8,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class Sensors2Players : MonoBehaviour {
 	// create object for datastream from PIStream.cs
@@ -24,6 +25,7 @@ public class Sensors2Players : MonoBehaviour {
 	public GameObject[] players;
 
 	public int Plactive;
+	public bool[] active;
 
 	// unknown
 	private int[] dropped;
@@ -35,6 +37,8 @@ public class Sensors2Players : MonoBehaviour {
 		plstream = GameObject.Find("Polhemus").GetComponent<PlStream>();
 
 		// get players
+
+				
 		players = GameObject.FindGameObjectsWithTag("Player");
 		dropped = new int[players.Length];
 
@@ -44,6 +48,8 @@ public class Sensors2Players : MonoBehaviour {
 
 		//plstream.conThread.Start();
 		// initializes arrays, fixes positions
+		active =  plstream.active;
+
 		zero();
 		prime_position = new Vector3(PlayerPrefs.GetFloat("xOrigin"), PlayerPrefs.GetFloat("yOrigin"), PlayerPrefs.GetFloat("zOrigin")) ;
 		table_scale = new Vector2(PlayerPrefs.GetFloat("xScale"), PlayerPrefs.GetFloat("yScale")); 
@@ -75,7 +81,7 @@ public class Sensors2Players : MonoBehaviour {
 				Vector3 unity_position;
 				unity_position.x = pol_position.x / table_scale.x;
 				unity_position.y = pol_position.y / table_scale.y;
-				unity_position.z = pol_position.z;
+				unity_position.z = pol_position.z + 0.1f;
 
 
 				Quaternion unity_rotation;

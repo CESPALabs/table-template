@@ -1,9 +1,12 @@
 ﻿// ---------------------------------------
 ///	<summary>
 /// 
-/// File: collisionDetection.cs		/	Attach to movable object
+/// File: collisionDetection.cs
 /// 
-/// Detects whether moveable object has bumped into an obstacle.
+/// Placement: should be attach to a movable object
+/// 
+/// Detects whether moveable object has bumped into an obstacle. If collision has occurs notes time since collision
+/// (useful for simulating "drops" because of collision).
 /// 
 /// </summary>
 // ---------------------------------------
@@ -18,11 +21,15 @@ public class collisionDetection : MonoBehaviour {
 
 	public bool hitObstacle; // has the object collider with an obstacle?
 	public float timeUntilActive;
+	public SpriteRenderer renderer;
+	public Color defColor;
 
 	// Use this for initialization
 	void Start () {
 		hitObstacle = false;
 		timeUntilActive = 0f;
+		renderer = gameObject.GetComponent<SpriteRenderer>();
+		defColor = 	renderer.color;
 	}
 
 	void OnCollisionEnter(Collision col)
@@ -36,6 +43,13 @@ public class collisionDetection : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timeUntilActive -= Time.deltaTime;
+
+		if(hitObstacle== true)
+		{
+			renderer.color = new Color(0f,0f,0f, .5f);
+		} else {
+			renderer.color = defColor;
+		}
 
 		if(timeUntilActive < 0){
 			hitObstacle = false;

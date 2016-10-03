@@ -32,7 +32,7 @@ public class showPositionActive : MonoBehaviour {
 		Vector3 polhemusPosition = (tablePosition - tableOrigin);
 		sampleNumber++;
 		text = GetComponent<Text> ();
-		text.text = "Polhemus: " + polhemusPosition.ToString () + Environment.NewLine + "Table: " + tablePosition.ToString () 
+		text.text = "Polhemus: " + polhemusPosition.ToString ("F3") + Environment.NewLine + "Table: " + tablePosition.ToString () 
 			+ Environment.NewLine + "Trial: " + trialNumber + Environment.NewLine + "Sample: " + sampleNumber.ToString();
 	}
 }

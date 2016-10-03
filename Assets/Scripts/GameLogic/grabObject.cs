@@ -20,7 +20,6 @@ public class grabObject : MonoBehaviour {
 	public float grabHeight;
 	public Vector3 movedCircle;
 	bool grab = false;
-	//public List<Vector3> avatarObjPos;
 	public Vector3 avatarObjPos = new Vector3 ();
 	public GameObject movedObj;
 	public string grabbedObjectName;
@@ -33,7 +32,6 @@ public class grabObject : MonoBehaviour {
 	public bool hitObstacle;
 	public bool trialComplete;
 	public List<string> grabList;
-	//public Transform holdpoint;
 
 
 
@@ -41,7 +39,7 @@ public class grabObject : MonoBehaviour {
 		
 
 	void Start (){
-		grabHeight = trialConditions.grabHeight;
+		grabHeight =0.10f;
 		grabCountdown = 0f;
 		}
 
@@ -70,7 +68,7 @@ public class grabObject : MonoBehaviour {
 		 
 
 
-		if (Physics.Raycast (grabbingRay, out hit, grabHeight) && hit.collider.tag=="object" && grabCountdown < 0 && Mathf.Abs(transform.position.z-lastPos.z) < .15)
+		if (Physics.Raycast (grabbingRay, out hit, grabHeight) && hit.collider.tag=="object" && grabCountdown < 0 && Mathf.Abs(transform.position.z) < .175)
  		{
 			grabbedIt = true;
 		} else {
@@ -94,16 +92,16 @@ public class grabObject : MonoBehaviour {
 
 			grabbedObjectPos.parent = transform; // attach to parent (Player)
 
-			Vector3 returnObjtoTable = new Vector3();
-			returnObjtoTable = grabbedObjectPos.position;
-			returnObjtoTable.z = .01f;
-			grabbedObjectPos.transform.position = returnObjtoTable;
+//			Vector3 returnObjtoTable = new Vector3();
+//			returnObjtoTable = grabbedObjectPos.position;
+//			returnObjtoTable.z = .02f;
+//			grabbedObjectPos.transform.position = returnObjtoTable;
 
 		} else {
 			
 			Vector3 returnObjtoTable = new Vector3();
 			returnObjtoTable = grabbedObjectPos.position;
-			returnObjtoTable.z = .01f;
+			returnObjtoTable.z = .00f;
 			grabbedObjectPos.transform.position = returnObjtoTable;
 			transform.DetachChildren();
 			grabbedObjectName = "none";
