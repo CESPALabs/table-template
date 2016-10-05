@@ -2,8 +2,11 @@
 ///	<summary>
 /// 
 /// File: goTrigger.cs
-/// 
-/// Keeps splashcreen scene on for N seconds (splashLoadtime)
+/// Scene: ITI
+/// Object: attach to every trialTrigger Object
+/// Purpose: detects whether a player object has collided with the trigger.
+/// InputFrom: NA
+/// ExportsTo: startTrial.cs
 /// 
 /// </summary>
 // ---------------------------------------
@@ -14,15 +17,12 @@ using UnityEngine.SceneManagement;
 
 public class goTrigger : MonoBehaviour {
 
-	int ready;
-	float trialCountdown;
-	public int trialNumber;
-	public bool trialStart;
+	public int ready;
+	bool trialStart;
 
 	void Start () {
-		trialCountdown = 300;
-		trialNumber = PlayerPrefs.GetInt ("trialNumber"); // get the trial number
 		trialStart = false;
+		ready = 0;
 	}
 
 
@@ -34,17 +34,14 @@ public class goTrigger : MonoBehaviour {
 			trialStart = true;
 			Debug.Log("Player entered the trial trigger");	
 
-			trialNumber++;
-			PlayerPrefs.SetInt("trialNumber", trialNumber);
-			ready = 1;
+
 
 			return trialStart;
 
-		} else {
-			trialStart = true;
+		} else { 
+			Debug.Log ("not hitting trigger");
 			return trialStart;
 
-			//Debug.Log ("not hitting trigger");
 		}
 
 	}
@@ -52,15 +49,14 @@ public class goTrigger : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if (trialStart == true){
+			ready = 1;
+		}
+
 		if (ready == 1){
 			GetComponent<SpriteRenderer>().materials[0].color = Color.green;
-			trialCountdown--;
 
 		}
-
-		if (trialCountdown < 0){
-			PlayerPrefs.SetInt("trialNumber", trialNumber);
-			SceneManager.LoadScene( "TableActive" );
-		}
+			
 	}
 }
