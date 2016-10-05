@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/// <summary>
+/// showPositionActive.cs
+/// 
+/// For debugging: shows polhemuis coordinates of tracker during active screen;
+/// 
+/// </summary>
+/// 
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System;

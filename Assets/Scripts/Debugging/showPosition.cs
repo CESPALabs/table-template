@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/// <summary>
+/// showPosition.cs
+
+/// For debugging: shows polhemuis coordinates of tracker during calibration screen;
+/// 
+/// </summary>
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System;

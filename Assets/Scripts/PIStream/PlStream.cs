@@ -1,6 +1,9 @@
 ﻿ //  VSS $Header: /PiDevTools11/Inc/PDIg4.h 18    1/09/14 1:05p Suzanne $  
 
-// attach to Polhemus object on calibration scene. ensures that stream is not destroyed between scenes
+// attach to Polhemus object on calibration scene. 
+// "DontDestroyOnLoad(transform.gameObject);" ensures that stream is not destroyed between scenes
+
+
 using UnityEngine;
 using System.Collections;
 using System.Net.Sockets;

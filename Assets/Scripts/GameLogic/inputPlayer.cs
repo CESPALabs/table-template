@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/// <summary>
+/// inputPlayer.cs
+/// 
+/// run in PlayerInfo scene; sfter entered moves to calibration screen
+/// 
+/// </summary>
+
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
