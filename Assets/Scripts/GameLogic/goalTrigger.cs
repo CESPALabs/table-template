@@ -3,7 +3,7 @@
 /// 
 /// File: goalTrigger.cs	/	Attach to goal location(s)
 /// 
-/// Detects whether specified goal location has been hit
+/// Detects whether specified goal location has been hit. If so translates
 /// 
 /// </summary>
 // ---------------------------------------
@@ -19,14 +19,15 @@ using System.Threading;
 
 public class goalTrigger : MonoBehaviour {
 
-	public bool trialComplete = false;
+	public int trialComplete = 0;
 	public string colObjectName;
 	public string goalNumber; // changes with goals
 	public Vector3 goalPosition;
+	public int maxhits;
 
 
 	// Use this for initialization
-	public bool OnTriggerEnter ( Collider gTrigger ) {
+	public int OnTriggerEnter ( Collider gTrigger ) {
 
 		if (gTrigger.gameObject.tag == "object"){
 
@@ -34,16 +35,12 @@ public class goalTrigger : MonoBehaviour {
 
 			Debug.Log("Player entered the goal");	
 
-			trialComplete = true;
-
-			TableEvents.triggerCounter.triggerCount++; // if goal has been hit, increase trigger couter by 1 *see TableEvents.cs
+			TableEvents.endHitCounter.endHit++; // if goal has been hit, increase trigger couter by 1 *see TableEvents.cs
 
 			return trialComplete;
 
-
-
 		} else {
-			trialComplete = false;
+			trialComplete = 0;
 			return trialComplete;
 		}
 
@@ -56,7 +53,7 @@ public class goalTrigger : MonoBehaviour {
 	}
 
 	void Update () {
-		//goalPosition = transform.position; // if dynamic
+		//check to see if maximum goal hits recorded
 	}
 		
 }

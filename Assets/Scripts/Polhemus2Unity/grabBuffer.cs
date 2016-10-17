@@ -18,6 +18,7 @@ public class grabBuffer : MonoBehaviour {
 	private PlStream plstream;
 
 	private int trialNumber;
+	private bool trialEnd;
 
 	public List<Vector4> pol_positions = new List<Vector4>();
 	public List<Vector4> pol_rotations = new List<Vector4>();
@@ -41,12 +42,12 @@ public class grabBuffer : MonoBehaviour {
 	}
 
 	void Start () {
-		// grab trial number from the System Preferences:
-//		trialNumber = 
 
 		// get the active thread from the plstream:
 		conThread = plstream.conThread;
 		start_line = plstream.buffer_line;
+
+		// grab trial number from the System Preferences:
 		trialNumber = PlayerPrefs.GetInt("trialnumber");
 	
 	}
@@ -54,16 +55,16 @@ public class grabBuffer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		trialEnd = TableEvents.trialEnded.trialStop;
 		// countdown for testing:
-		countdown = countdown - Time.deltaTime;
+		//countdown = countdown - Time.deltaTime;
 
-
-		if (countdown < 0)
+		if (trialEnd = true)
+		//if (countdown < 0)
 		{
-			//plstream.enabled = false;
-			//conThread.Abort();
+			
 			get_buffer(); // get the data
-			save_buffer(); // save the data
+			save_buffer_pos(); // save the position data
 
 			SceneManager.LoadScene("ITI");
 		}
@@ -76,6 +77,10 @@ public class grabBuffer : MonoBehaviour {
 
 	private void get_buffer()
 	{
+		// grabs plstream buffer from line at start of trial to line when trialEnd == true:
+
+
+		// get current buffer line
 		end_line = plstream.buffer_line;
 
 		for (int line = start_line; line < end_line; line++){
@@ -87,8 +92,9 @@ public class grabBuffer : MonoBehaviour {
 
 	}
 
-	private void save_buffer()
+	private void save_buffer_pos()
 	{
+		// save polhemus data:
 		StreamWriter sd = new StreamWriter("trial_" + trialNumber + ".polhemus");
 
 		foreach(Vector4 sp in pol_positions)
@@ -98,15 +104,7 @@ public class grabBuffer : MonoBehaviour {
 
 		sd.Close();
 
-//		StreamWriter shc = new StreamWriter("hardclock.txt");
-//
-//		foreach(string ch in Clockhardware)
-//		{
-//			shc.WriteLine(ch);
-//		}
-//
-//		shc.Close();
-
+		// save timing data:
 		StreamWriter suc = new StreamWriter("updateclock.txt");
 
 		foreach(string cu in Clockupdate)

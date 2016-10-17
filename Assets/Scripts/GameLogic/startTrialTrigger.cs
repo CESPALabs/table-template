@@ -1,7 +1,7 @@
 ﻿// ---------------------------------------
 ///	<summary>
 /// 
-/// File: goTrigger.cs
+/// File: startTrialTrigger.cs
 /// Scene: ITI
 /// Object: attach to every trialTrigger Object
 /// Purpose: detects whether a player object has collided with the trigger.
@@ -15,7 +15,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class goTrigger : MonoBehaviour {
+public class startTrialTrigger : MonoBehaviour {
 
 	public int ready;
 	bool trialStart;
