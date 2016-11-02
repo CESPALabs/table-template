@@ -39,7 +39,7 @@ public class grabObject : MonoBehaviour {
 		
 
 	void Start (){
-		grabHeight =0.10f;
+		grabHeight =0.20f;
 		grabCountdown = 0f;
 		}
 
